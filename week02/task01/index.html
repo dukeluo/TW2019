@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 1</title>
+</head>
+<body>
+  <header>
+    <h2>统一建模语言理论测试</h2>
+    <div class="detail">
+      <div class="row">
+        <span class="item"><span>考试科目：</span>统一建模语言</span>
+        <span class="item"><span>时间：</span>100分钟</span>
+        <span class="item"><span>得分：</span>100</span>
+      </div>
+      <div class="row">
+        <span class="item">
+          <span>班级：</span>
+          <input type="text" name="class" value="1 班">
+        </span>
+        <span class="item">
+          <span>学号：</span>
+          <input type="text" name="student-id" value="001">
+        </span>
+        <span class="item">
+          <span>姓名：</span>
+          <input type="text" name="name" value="王小闹">
+        </span>
+      </div>
+    </div>
+  </header>
+  <section>
+    <h3 class="description">一、填空题（每空5分，共20分）</h3>
+    <div class="questions">
+      <div class="question-item">
+        <span>1. UML 的中文全称是：</span>
+        <span><input type="text" name="1-1-1" value="统一建模语言"></span>
+      </div>
+      <div class="question-item">
+        <span>2. 对象最突出的特征是：</span>
+        <span><input type="text" name="1-2-1" value="封装性"></span>
+        <span><input type="text" name="1-2-2" value="继承性"></span>
+        <span><input type="text" name="1-2-3" value="多态性"></span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3 class="description">二、选择题（每题10分，共20分）</h3>
+    <div class="questions">
+      <div class="question-item">
+        <p>1. UML 与软件工程的关系是：</p>
+        <form action="#">
+          <input type="radio" name="2-1" value="a">（A）UML 就是软件工程
+          <br />
+          <input type="radio" name="2-1" value="b" checked="checked">（B）UML 参与到软件工程中软件开发工程的几个阶段
+          <br />
+          <input type="radio" name="2-1" value="c">（C）UML 与软件工程无关
+          <br />
+          <input type="radio" name="2-1" value="d">（D）UML 是软件工程的一部分
+        </form>
+      </div>
+      <div class="question-item">
+        <p>2. Java 语言支持：</p>
+        <form action="#">
+          <input type="radio" name="2-2" value="a" checked="checked">（A）单继承
+          <br />
+          <input type="radio" name="2-2" value="b">（B）多继承
+          <br />
+          <input type="radio" name="2-2" value="c">（C）单继承和多继承都支持
+          <br />
+          <input type="radio" name="2-2" value="d">（D）单继承和多继承都不支持
+        </form>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3 class="description">三、多择题（每题10分，共20分）</h3>
+    <div class="questions">
+      <div class="question-item">
+        <p>1. 用例的粒度分为以下哪三种：</p>
+        <form action="#">
+          <input type="checkbox" name="3-1" value="a" checked="checked">（A）概述级
+          <br />
+          <input type="checkbox" name="3-1" value="b" checked="checked">（B）需求级
+          <br />
+          <input type="checkbox" name="3-1" value="c">（C）用户目标级
+          <br />
+          <input type="checkbox" name="3-1" value="d" checked="checked">（D）子功能级
+        </form>
+      </div>
+      <div class="question-item">
+        <p>2. 类图由以下哪三部分组成：</p>
+        <form action="#">
+          <input type="checkbox" name="3-2" value="a" checked="checked">（A）名称（Name）
+          <br />
+          <input type="checkbox" name="3-2" value="b" checked="checked">（B）属性（Attribute）
+          <br />
+          <input type="checkbox" name="3-2" value="c" checked="checked">（C）操作（Operation）
+          <br />
+          <input type="checkbox" name="3-2" value="d">（D）方法（Function）
+        </form>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3 class="description">四、判断题（每题10分，共20分）</h3>
+    <div class="questions">
+      <div class="question-item">
+        <span>1. 用例图只是用于和客户交流和沟通的，用于确定需求。</span>
+        <input type="radio" name="4-1" value="true">√
+        <input type="radio" name="4-1" value="false" checked="checked">×
+      </div>
+    </div>
+    <div class="questions">
+      <div class="question-item">
+        <span>2. 在状态图中，终止状态在一个状态图中允许有任意多个。</span>
+        <input type="radio" name="4-2" value="true" checked="checked">√
+        <input type="radio" name="4-2" value="false">×
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3 class="description">五、简答题（每题20分，共20分）</h3>
+    <div class="questions">
+      <div class="question-item">
+        <p>1. 简述什么是模型以及模型的表现形式？</p>
+        <textarea name="5-1" rows="8" cols="80">模型是对现实世界的简化和抽象，模型是对所有研究的系统、过程、事物或概念的一种表达形式。可以是物理实体；可以是某种图形；或者是一种数学表达式。
+        </textarea>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <button type="button" name="submit-answer">计算分数</button>
+  </footer>
+</body>
+</html>
