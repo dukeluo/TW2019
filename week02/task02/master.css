@@ -1,0 +1,124 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.paper {
+  width: 960px;
+  box-sizing: border-box;
+  margin: 40px 0;
+  border: 3px solid red;
+  border-radius: 3px;
+}
+
+.paper > * {
+  margin: 20px 40px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+
+/* title section */
+.paper header {
+  border: 0;
+}
+
+header h2 {
+  text-align: center;
+  margin: 0;
+}
+
+header .row {
+  display: flex;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin: 20px 0;
+  padding: 16px 10px;
+}
+
+.row .item {
+  width: 250px;
+  flex-grow: 1;
+}
+
+.item span,
+.question-item p {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 160px;
+  height: 24px;
+  border: 2px solid #ddd;
+  border-radius: 2px;
+}
+
+
+/* test section */
+.description {
+  height: 50px;
+  padding: 0 10px;
+  border-bottom: 2px solid #ddd;
+  background-color: #eee;
+}
+
+.description h3 {
+  margin: 0;
+  line-height: 50px;
+}
+
+.questions {
+  padding: 10px;
+}
+
+.question-item {
+  margin-bottom: 10px;
+}
+
+.question-item p {
+  margin-top: 0;
+}
+
+.question-item form,
+#part-5 textarea {
+  margin-left: 20px;
+}
+
+#part-5 textarea {
+  width: 800px;
+  border: 2px solid #ddd;
+  border-radius: 2px;
+}
+
+#part-4 form {
+  float: left;
+}
+
+#part-4 p {
+  display: inline-block;
+  float: left;
+}
+
+#part-4 .question-item {
+  clear: both;
+  overflow: auto;
+}
+
+
+/* submit button */
+.paper footer {
+  display: flex;
+  justify-content: center;
+  border: 0;
+}
+
+footer button {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #008cba;
+  font-size: 16px;
+  color: white;
+}
