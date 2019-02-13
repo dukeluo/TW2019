@@ -327,8 +327,9 @@ header #donate-area {
 
 
 /* footer */
-footer {
+footer p {
   height: 100px;
+  margin: 0;
   line-height: 100px;
   background-color: #4d4e59;
   color: #d4d2d0;
