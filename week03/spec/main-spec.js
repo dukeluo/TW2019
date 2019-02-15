@@ -8,4 +8,12 @@ describe('taxi fee', function () {
 
         expect(result).toEqual(0);
     });
+
+    it("returns the number 6 when given 1 km distance and 0 min parking wait", function () {
+        let distance = 1;
+        let parkingTime = 0;
+        let result = main(distance, parkingTime);
+
+        expect(result).toEqual(6);
+    });
 });
