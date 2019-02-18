@@ -1,3 +1,26 @@
+## 任务列表
+
+```javascript
+#1 计算汇总信息  bestChange 函数
+输入：
+	selectedItems: [String]
+	items: [{
+        id: String,
+        name: String,
+        price: Number
+	}]: loadAllItems()
+    promotions: [{
+        type: String,
+        items: [String]
+    }]: loadPromotions()
+	
+输出：
+	billText: String
+```
+
+![](https://s2.ax1x.com/2019/02/18/kcUVG8.png)
+
+
 
 ## 需求描述
 
