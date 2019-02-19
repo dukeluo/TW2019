@@ -124,4 +124,4 @@
 
 ### 浏览器
 
-可使用浏览器打开`run-specs.html`[文件](./run-specs.html)运行测试，打开`index.html`[文件](./public/index.html)运行函数。
+可使用浏览器打开`run-specs.html`[文件](https://dukeluo.me/TW2019/week04/task01/run-specs.html)运行测试，打开`index.html`[文件](https://dukeluo.me/TW2019/week04/task01/public/index.html)运行函数。
