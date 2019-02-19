@@ -3,17 +3,17 @@
 ```javascript
 #1 计算汇总信息  bestChange 函数
 输入：
-	selectedItems: [String]
-	items: [{
+  selectedItems: [String]
+  items: [{
         id: String,
         name: String,
         price: Number
-	}]: loadAllItems()
-    promotions: [{
+  }]: loadAllItems()
+  promotions: [{
         type: String,
         items: [String]
-    }]: loadPromotions()
-	
+  }]: loadPromotions()
+
 输出：
 	billText: String
 ```
