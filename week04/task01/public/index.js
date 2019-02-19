@@ -42,7 +42,7 @@ function calculatePrice() {
     let v = itemInputs[i].value;
 
     if (+v > 0) {
-      t += itemInputs[i].id + " x " + v;
+      t += itemInputs[i].id + " x " + (+v);
       input.push(t);
     }
   }
