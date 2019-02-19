@@ -1,12 +1,62 @@
-// 请把与index.html页面相关的javascript代码写在这里
-// 同时删除该注释
+"use strict";
+
+let items = loadAllItems();
+let promotions = loadPromotions();
+let messageDiv = document.getElementById("message");
+let checkoutBtn = document.getElementById("checkout");
+let clearBtn = document.getElementById("clear");
+
+function buildItemsDivText() {
+  let itemsDiv = document.getElementById("items");
+  let text = "";
+
+  for (let i = 0; i < items.length; i++) {
+    let t = `<div class="singal-item">
+              <span>${items[i].name}: ${items[i].price} * </span>
+              <input type="number" id=${items[i].id} class="item-quantity" min="0" max="128">
+            </div>`;
+
+    text += t;
+  }
+  itemsDiv.innerHTML = text;
+}
+
+function buildPromotionsDivText() {
+  let promotionsDiv = document.getElementById("promotions");
+  let text = "";
+
+  for (let i = 0; i < promotions.length; i++) {
+    let t = `<p>${i+1}. ${promotions[i].type}</p>`;
+
+    text += t;
+  }
+  promotionsDiv.innerHTML = text;
+}
 
 function calculatePrice() {
-  // 想办法调用`bestCharge`并且把返回的字符串
-  // 显示在html页面的`message`中
+  let itemInputs = document.getElementsByClassName("item-quantity");
+  let input = [];
+
+  for (let i = 0; i < itemInputs.length; i++) {
+    let t = "";
+    let v = itemInputs[i].value;
+
+    if (+v > 0) {
+      t += itemInputs[i].id + " x " + v;
+      input.push(t);
+    }
+  }
+  if (input.length) {
+    messageDiv.innerHTML = bestCharge(input);
+  }
 }
 
 function clear() {
-  // 清除用户的选择，以及页面显示的信息
-  // 清除之后，用户可以继续正常使用各项功能
+  messageDiv.innerHTML = "";
 }
+
+checkoutBtn.addEventListener("click", calculatePrice);
+clearBtn.addEventListener("click", clear);
+
+buildItemsDivText();
+buildPromotionsDivText();
