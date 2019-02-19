@@ -124,4 +124,4 @@
 
 ### 浏览器
 
-可使用浏览器打开`run-specs.html`文件运行测试
+可使用浏览器打开`run-specs.html`[文件](./run-specs.html)运行测试，打开`index.html`[文件](./public/index.html)运行函数。
