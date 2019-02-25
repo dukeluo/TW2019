@@ -27,6 +27,10 @@ a:active {
   cursor: pointer;
 }
 
+body {
+  background-color: #80a8cc;
+}
+
 /* navigation bar */
 header .container {
   height: 100px;
@@ -47,7 +51,7 @@ header .container {
   display: block;
   width: 150px;
   height: 80px;
-  background-color: #ccc;
+  background-color: #80a8cc;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -99,7 +103,6 @@ header #donate-area {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #ccc;
   /* background-image: url(""); */
 }
 
@@ -207,7 +210,7 @@ header #donate-area {
   height: 330px;
   margin-right: 138px;
   flex: 0 0 330px;
-  background-color: #ccc;
+  background-color: #80a8cc;
 }
 
 .intro-detail h2 {
