@@ -1,69 +1,94 @@
 "use strict";
 
-function bestCharge(selectedItems) {
-  let items = loadAllItems();
-  let promotions = loadPromotions();
-  let sum = 0;
+function turnIntoSelectedItemObj(selectedItemStr, allItems) {
+  let [id, count] = selectedItemStr.split(/\s*x\s*/);
+  let item = allItems.find(e => e.id === id);
+  let cost;
 
-  selectedItems = selectedItems.map(function (item) {
-    let i;
-
-    item = item.split(/\s*x\s*/);
-    i = items.find(function (e) {
-      return e.id === item[0];
-    });
-    item.push(i.name);
-    item.push(i.price);
-    return item;
-  });
-  selectedItems.forEach(function (item) {
-    sum += (+item[1]) * item[3];
-  });
+  count = +count;
+  cost = count * item.price;
+  return Object.assign({}, item, {count, cost});
+}
 
 
+function calculator(selectedItemObjArray, allPromotions) {
+  let sum = selectedItemObjArray.reduce((total, curr) => total+curr.cost, 0);
   let op1 = sum;
   let op2 = sum;
-  let op2ItemIds = promotions[1].items;
+  let diff = 0;
+  let promotionId = 0; // representative no promotion
+  let promotionDescription = "";
   let op2ItemNames = [];
-  let selectedPromotions;
-  let diff;
 
   if (sum >= 30) {
     op1 -= 6;
   }
-  selectedItems.forEach(function (item) {
-    if (op2ItemIds.indexOf(item[0]) !== -1) {
-      op2 -= 0.5 * item[3] * (+item[1]);
-      op2ItemNames.push(item[2]);
+  selectedItemObjArray.forEach(e => {
+    if (allPromotions[1].items.indexOf(e.id) !== -1) {
+      op2 -= 0.5 * e.cost;
+      op2ItemNames.push(e.name);
     }
   });
   if (op1 <= op2 && op1 < sum) {
-    selectedPromotions = 0;
+    promotionId = 1;
     diff = sum - op1;
     sum = op1;
+    promotionDescription = `${allPromotions[0].type}，省${diff}元`;
   } else if (op1 > op2) {
-    selectedPromotions = 1;
+    promotionId = 2;
     diff = sum - op2;
     sum = op2;
+    promotionDescription = `${allPromotions[1].type}(${op2ItemNames.join("，")})，省${diff}元`;
   }
+  return {
+    items: selectedItemObjArray,
+    promotionId,
+    promotionDescription,
+    sum,
+    diff
+  };
+}
 
 
-  let billText = "============= 订餐明细 =============\n";
+function buildBillText(billObj) {
+  let itemStr = [];
+  let promotionStr = [];
+  let billText;
 
-  selectedItems.forEach(function (item) {
-    billText += item[2] + " x " + item[1] + " = " + (+item[1]*item[3]) + "元\n";
-  });
-  billText += "-----------------------------------\n";
-  if (selectedPromotions !== undefined) {
-    billText += "使用优惠:\n";
-    billText += promotions[selectedPromotions].type;
-    if (selectedPromotions === 1) {
-      billText += "(" + op2ItemNames.join("，") + ")";
+  itemStr = billObj.items.map(e => `${e.name} x ${e.count} = ${e.cost}元`);
+  if (billObj.promotionId) {
+    promotionStr = ["使用优惠:", billObj.promotionDescription, "-----------------------------------"];
+  }
+  billText = ["============= 订餐明细 =============",
+              ...itemStr,
+              "-----------------------------------",
+              ...promotionStr,
+              `总计：${billObj.sum}元`,
+              "==================================="].join("\n");
+  return billText;
+}
+
+
+function bestCharge(selectedItems) {
+  let items = loadAllItems();
+  let promotions = loadPromotions();
+  let selectedItemObjArray, billObj;
+
+  if (!items) {
+    console.error("Items is null or undefined!");
+    return ;
+  }
+  if (!promotions) {
+    console.error("Promotions is null or undefined!");
+    return ;
+  }
+  selectedItems.forEach(e => {
+    if (e.indexOf("x") === -1) {
+      console.error("Wrong format!");
+      return ;
     }
-    billText += "，省" + diff + "元\n";
-    billText += "-----------------------------------\n";
-  }
-  billText += "总计：" + sum + "元\n";
-  billText += "===================================\n";
-  return billText.trim();
+  });
+  selectedItemObjArray = selectedItems.map(e => turnIntoSelectedItemObj(e, items));
+  billObj = calculator(selectedItemObjArray, promotions);
+  return buildBillText(billObj);
 }
