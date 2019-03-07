@@ -72,6 +72,7 @@ function buildBillText(billObj) {
 function bestCharge(selectedItems) {
   let items = loadAllItems();
   let promotions = loadPromotions();
+  let incorrectFormatItem = selectedItems.some(e => e.indexOf("x") === -1);
   let selectedItemObjArray, billObj;
 
   if (!items) {
@@ -82,12 +83,10 @@ function bestCharge(selectedItems) {
     console.error("Promotions is null or undefined!");
     return ;
   }
-  selectedItems.forEach(e => {
-    if (e.indexOf("x") === -1) {
-      console.error("Wrong format!");
-      return ;
-    }
-  });
+  if (incorrectFormatItem) {
+    console.error("Wrong format!");
+    return ;
+  }
   selectedItemObjArray = selectedItems.map(e => turnIntoSelectedItemObj(e, items));
   billObj = calculator(selectedItemObjArray, promotions);
   return buildBillText(billObj);
