@@ -11,42 +11,35 @@ function turnIntoSelectedItemObj(selectedItemStr, allItems) {
 }
 
 
-function calculator(selectedItemObjArray, allPromotions) {
-  let sum = selectedItemObjArray.reduce((total, curr) => total+curr.cost, 0);
-  let op1 = sum;
-  let op2 = sum;
-  let diff = 0;
-  let promotionId = 0; // representative no promotion
-  let promotionDescription = "";
-  let op2ItemNames = [];
+function sumOfPromotionOne(selectedItemObjArray, originalSum, promotion) {
+  if (originalSum >= 30) {
+    return {
+      items: selectedItemObjArray,
+      promotionId: 1,
+      promotionDescription: `${promotion.type}，省6元`,
+      sum: originalSum - 6,
+      diff: 6
+    };
+  }
+  return ;
+}
 
-  if (sum >= 30) {
-    op1 -= 6;
+
+function sumOfPromotionTwo(selectedItemObjArray, originalSum, promotion) {
+  let discountedItemObjArray = selectedItemObjArray.filter(e => promotion.items.indexOf(e.id) !== -1);
+
+  if (discountedItemObjArray.length) {
+    let diff = discountedItemObjArray.reduce((total, curr) => total+0.5*curr.cost, 0);
+
+    return {
+      items: selectedItemObjArray,
+      promotionId: 2,
+      promotionDescription: `${promotion.type}(${discountedItemObjArray.map(e => e.name).join("，")})，省${diff}元`,
+      sum: originalSum - diff,
+      diff
+    };
   }
-  selectedItemObjArray.forEach(e => {
-    if (allPromotions[1].items.indexOf(e.id) !== -1) {
-      op2 -= 0.5 * e.cost;
-      op2ItemNames.push(e.name);
-    }
-  });
-  if (op1 <= op2 && op1 < sum) {
-    promotionId = 1;
-    diff = sum - op1;
-    sum = op1;
-    promotionDescription = `${allPromotions[0].type}，省${diff}元`;
-  } else if (op1 > op2) {
-    promotionId = 2;
-    diff = sum - op2;
-    sum = op2;
-    promotionDescription = `${allPromotions[1].type}(${op2ItemNames.join("，")})，省${diff}元`;
-  }
-  return {
-    items: selectedItemObjArray,
-    promotionId,
-    promotionDescription,
-    sum,
-    diff
-  };
+  return ;
 }
 
 
@@ -73,7 +66,6 @@ function bestCharge(selectedItems) {
   let items = loadAllItems();
   let promotions = loadPromotions();
   let incorrectFormatItem = selectedItems.some(e => e.indexOf("x") === -1);
-  let selectedItemObjArray, billObj;
 
   if (!items) {
     console.error("Items is null or undefined!");
@@ -87,7 +79,24 @@ function bestCharge(selectedItems) {
     console.error("Wrong format!");
     return ;
   }
-  selectedItemObjArray = selectedItems.map(e => turnIntoSelectedItemObj(e, items));
-  billObj = calculator(selectedItemObjArray, promotions);
+
+
+  let selectedItemObjArray = selectedItems.map(e => turnIntoSelectedItemObj(e, items));
+  let originalSum = selectedItemObjArray.reduce((total, curr) => total+curr.cost, 0);
+  let sumOption1 = sumOfPromotionOne(selectedItemObjArray, originalSum, promotions[0]);
+  let sumOption2 = sumOfPromotionTwo(selectedItemObjArray, originalSum, promotions[1]);
+  let billObj;
+
+  if (!sumOption1 && !sumOption2) {
+    billObj = {
+      items: selectedItemObjArray,
+      promotionId: 0,   // representative no promotion
+      promotionDescription: "",
+      sum: originalSum,
+      diff: 0
+    }
+  } else {
+    billObj = sumOption1.diff >= sumOption2.diff ? sumOption1 : sumOption2;
+  }
   return buildBillText(billObj);
 }
