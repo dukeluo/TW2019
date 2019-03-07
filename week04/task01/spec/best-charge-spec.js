@@ -1,10 +1,11 @@
 describe('Take out food', function () {
   it("should print error message when the input is in the wrong format", function () {
+    spyOn(console, "error");
+
     let inputs = ["ITEM0001 - 1", "ITEM0013 x 2", "ITEM0022 x 1"];
     let expectText = "Wrong format!";
-    let summary = bestCharge(inputs).trim();
+    let summary = bestCharge(inputs);
 
-    spyOn(console, "error");
     expect(console.error).toHaveBeenCalledWith(expectText);
     expect(summary).toEqual(undefined);
   });
