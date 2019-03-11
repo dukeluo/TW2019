@@ -1,10 +1,13 @@
 package cn.school.thoughtworks.section1;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class PracticeA {
     List<String> collectSameElements(List<String> collection1, List<String> collection2) {
-        //实现练习要求，并改写该行代码。
-        return null;
+        List<String> unionSet = new ArrayList<String>(collection1);
+
+        unionSet.retainAll(collection2);
+        return unionSet;
     }
 }
