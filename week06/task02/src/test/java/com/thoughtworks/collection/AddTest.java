@@ -118,7 +118,7 @@ public class AddTest {
     @Test
     public void should_return_unrepeated_elements_from_evens() {
         //找出数组中的所有偶数，从中剔除重复数据并返回
-        Integer[] array = new Integer[]{1, 2, 3, 4, 1, 5};
+        Integer[] array = new Integer[]{1, 2, 3, 4, 1, 5, 2, 4};
         List<Integer> arrayList = Arrays.asList(array);
 
         Integer[] result = new Integer[]{2, 4};
