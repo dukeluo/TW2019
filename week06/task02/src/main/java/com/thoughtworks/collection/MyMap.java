@@ -42,8 +42,8 @@ public class MyMap {
 
     public List<String> mapLetters() {
         return this.array.stream()
-                .map(MyMap::tenToTwentySixBaseOne)
-                .collect(Collectors.toList());
+                         .map(MyMap::tenToTwentySixBaseOne)
+                         .collect(Collectors.toList());
     }
 
     public List<Integer> sortFromBig() {
