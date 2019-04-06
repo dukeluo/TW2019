@@ -1,5 +1,21 @@
 # 学生成绩单（命令行模式版）
 
+## 说明
+
+```javascript
+#1 测试
+./gradlew test
+
+#2 运行
+./gradlew build
+java -jar ./build/libs/task02.jar
+```
+
+![](https://s2.ax1x.com/2019/04/06/AfA3lD.png)
+
+
+
+
 ## 任务列表
 
 ```javascript
