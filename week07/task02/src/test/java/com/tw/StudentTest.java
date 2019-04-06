@@ -18,7 +18,7 @@ public class StudentTest {
         String result = s.getName();
         String expectedResult = "张三";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class StudentTest {
         String result = s.getId();
         String expectedResult = "001";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class StudentTest {
         int result = s.getTotal();
         int exceptedResult = 330;
 
-        assertEquals(result, exceptedResult);
+        assertEquals(exceptedResult, result);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class StudentTest {
         double exceptedResult = 82.5;
         double delta = 0.001;
 
-        assertEquals(result, exceptedResult, delta);
+        assertEquals(exceptedResult, result, delta);
     }
 
     @Test
@@ -51,6 +51,22 @@ public class StudentTest {
         String result = s.getGradeString();
         String exceptedResult = "张三|75|95|80|80|82.50|330";
 
-        assertEquals(result, exceptedResult);
+        assertEquals(exceptedResult, result);
+    }
+
+    @Test
+    public void should_return_true_when_two_student_object_have_same_literal_value() throws Exception {
+        Student same = new Student("张三", "001", 75, 95, 80, 80);
+        boolean result = s.equals(same);
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void should_return_false_when_two_student_object_have_different_literal_value() throws Exception {
+        Student same = new Student("张三", "002", 75, 95, 80, 80);
+        boolean result = s.equals(same);
+
+        assertEquals(false, result);
     }
 }
