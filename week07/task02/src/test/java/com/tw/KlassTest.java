@@ -40,7 +40,7 @@ public class KlassTest {
         boolean result = true;
         boolean expectedResult = klass.has(s1);
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class KlassTest {
         boolean result = false;
         boolean expectedResult = klass.has(s);
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class KlassTest {
         List<Student> result = studentList;
         List<Student> expectedResult = klass.getStudents();
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class KlassTest {
         double expectedResult = 327.5;
         double delta = 0.001;
 
-        assertEquals(result, expectedResult, delta);
+        assertEquals(expectedResult, result, delta);
     }
 
     @Test
@@ -75,6 +75,6 @@ public class KlassTest {
         double expectedResult = 327.5;
         double delta = 0.001;
 
-        assertEquals(result, expectedResult, delta);
+        assertEquals(expectedResult, result, delta);
     }
 }

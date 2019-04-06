@@ -22,7 +22,7 @@ public class BuildTextTest {
                                 "3. 退出\n" +
                                 "请输入你的选择（1～3）：";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptToAddStudent();
         String expectedResult = "请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptWhenAddStudentIncorrectly();
         String expectedResult = "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptWhenAddStudentWithSameId(s);
         String expectedResult = "学号001已存在";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptWhenAddStudentCorrectly(s);
         String expectedResult = "学生张三的成绩被添加";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptToPrintCard();
         String expectedResult = "请输入要打印的学生的学号（格式： 学号, 学号, ...），按回车提交：";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class BuildTextTest {
         String result = buildTextObj.buildPromptWhenInputIdsIncorrectly();
         String expectedResult = "请按正确的格式输入要打印的学生的学号（格式： 学号, 学号, ...），按回车提交：";
 
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 
     @Test
@@ -92,6 +92,6 @@ public class BuildTextTest {
                                 "========================\n" +
                                 "全班总分平均数：327.50\n" +
                                 "全班总分中位数：327.50";;
-        assertEquals(result, expectedResult);
+        assertEquals(expectedResult, result);
     }
 }
