@@ -13,8 +13,8 @@ import static java.lang.Integer.parseInt;
  * Created by jxzhong on 2017/5/16.
  */
 public class Answer {
-
     private List<String> numList;
+    private final int INPUT_COUNT = 4;
 
     public void setNumList(List<String> numList) {
         this.numList = numList;
@@ -32,7 +32,7 @@ public class Answer {
                 .map(num -> parseInt(num))
                 .distinct()
                 .filter(num -> num < 10).count();
-        if (validatedNum < numList.size()) {
+        if (validatedNum < INPUT_COUNT) {
             throw new OutOfRangeAnswerException("Answer format is incorrect");
         }
     }
