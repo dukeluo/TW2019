@@ -8,8 +8,8 @@ public class PracticeB {
         List<String> stringList = new ArrayList<String>();
         List<String> intersection = new ArrayList<String>(collection1);
 
-        for (List<String> l : collection2) {
-            stringList.addAll(l);
+        for (List<String> list : collection2) {
+            stringList.addAll(list);
         }
         intersection.retainAll(stringList);
         return intersection;
