@@ -8,11 +8,11 @@ public class PracticeA {
     Map<String,Integer> countSameElements(List<String> collection1) {
         Map<String, Integer> countMap = new HashMap();
 
-        for (String s : collection1) {
-            if (countMap.containsKey(s)) {
-                countMap.put(s, countMap.get(s)+1);
+        for (String str : collection1) {
+            if (countMap.containsKey(str)) {
+                countMap.put(str, countMap.get(str)+1);
             } else {
-                countMap.put(s, 1);
+                countMap.put(str, 1);
             }
         }
         return countMap;

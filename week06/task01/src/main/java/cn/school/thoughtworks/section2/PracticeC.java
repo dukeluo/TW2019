@@ -8,30 +8,30 @@ public class PracticeC {
     Map<String, Integer> countSameElements(List<String> collection1) {
         Map<String, Integer> countMap = new HashMap();
 
-        for (String s : collection1) {
-            if (s.length() != 1) {
-                multiCharsHandler(s, countMap);
+        for (String str : collection1) {
+            if (str.length() != 1) {
+                multiCharsHandler(str, countMap);
             } else {
-                increaseCount(s, 1, countMap);
+                increaseCount(str, 1, countMap);
             }
         }
         return countMap;
     }
 
-    public static void multiCharsHandler(String s, Map<String, Integer> map) {
+    public static void multiCharsHandler(String str, Map<String, Integer> map) {
         int index;
         int auxIndex;
 
-        if (s.contains("-")) {
-            index = s.indexOf("-");
-            increaseCount(s.substring(0, index), Integer.parseInt(s.substring(index+1)), map);
-        } else if (s.contains(":")) {
-            index = s.indexOf(":");
-            increaseCount(s.substring(0, index), Integer.parseInt(s.substring(index+1)), map);
-        } else if (s.contains("[") && s.contains("]")) {
-            index = s.indexOf("[");
-            auxIndex = s.indexOf("]");
-            increaseCount(s.substring(0, index), Integer.parseInt(s.substring(index+1, auxIndex)), map);
+        if (str.contains("-")) {
+            index = str.indexOf("-");
+            increaseCount(str.substring(0, index), Integer.parseInt(str.substring(index+1)), map);
+        } else if (str.contains(":")) {
+            index = str.indexOf(":");
+            increaseCount(str.substring(0, index), Integer.parseInt(str.substring(index+1)), map);
+        } else if (str.contains("[") && str.contains("]")) {
+            index = str.indexOf("[");
+            auxIndex = str.indexOf("]");
+            increaseCount(str.substring(0, index), Integer.parseInt(str.substring(index+1, auxIndex)), map);
         }
     }
 
