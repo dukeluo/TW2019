@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class PracticeC {
-    Map<String, Integer> countSameElements(List<String> collection1) {
+    public Map<String, Integer> countSameElements(List<String> collection1) {
         Map<String, Integer> countMap = new HashMap();
 
         for (String str : collection1) {
@@ -18,7 +18,7 @@ public class PracticeC {
         return countMap;
     }
 
-    public static void multiCharsHandler(String str, Map<String, Integer> map) {
+    private void multiCharsHandler(String str, Map<String, Integer> map) {
         int index;
         int auxIndex;
 
@@ -35,7 +35,7 @@ public class PracticeC {
         }
     }
 
-    public static void increaseCount(String item, int num, Map<String, Integer> map) {
+    private void increaseCount(String item, int num, Map<String, Integer> map) {
         if (map.containsKey(item)) {
             map.put(item, map.get(item)+num);
         } else {
