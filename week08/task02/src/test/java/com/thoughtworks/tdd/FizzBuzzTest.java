@@ -54,4 +54,11 @@ public class FizzBuzzTest {
 
         assertEquals("FizzWhizz", result);
     }
+
+    @Test
+    void should_return_BuzzWhizz_when_number_is_a_multiple_of_5_or_7() {
+        String result = fizzBuzz.fizzBuzz(70);
+
+        assertEquals("BuzzWhizz", result);
+    }
 }
