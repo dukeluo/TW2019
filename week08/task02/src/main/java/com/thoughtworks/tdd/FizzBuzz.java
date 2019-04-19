@@ -6,6 +6,8 @@ public class FizzBuzz {
 
         if (num % 3 == 0) {
             result += "Fizz";
+        } else if (num % 5 == 0) {
+            result += "Buzz";
         } else {
             result += num;
         }
