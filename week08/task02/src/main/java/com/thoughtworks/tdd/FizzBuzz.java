@@ -6,11 +6,14 @@ public class FizzBuzz {
 
         if (num % 3 == 0) {
             result += "Fizz";
-        } else if (num % 5 == 0) {
+        }
+        if (num % 5 == 0) {
             result += "Buzz";
-        } else if (num % 7 == 0) {
+        }
+        if (num % 7 == 0) {
             result += "Whizz";
-        } else {
+        }
+        if (result.length() == 0) {
             result += num;
         }
         return result;
