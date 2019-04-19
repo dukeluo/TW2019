@@ -8,6 +8,8 @@ public class FizzBuzz {
             result += "Fizz";
         } else if (num % 5 == 0) {
             result += "Buzz";
+        } else if (num % 7 == 0) {
+            result += "Whizz";
         } else {
             result += num;
         }
