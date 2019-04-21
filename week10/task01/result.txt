@@ -1,0 +1,85 @@
+CREATE TABLE IF NOT EXISTS `Employee`(
+   `id` INT UNSIGNED NOT NULL,
+   `name` VARCHAR(16) NOT NULL,
+   `age` INT UNSIGNED NOT NULL,
+   `gender` VARCHAR(8) NOT NULL,
+   `companyId` INT UNSIGNED NOT NULL,
+   `salary` INT UNSIGNED NOT NULL,
+   PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+LOAD DATA LOCAL INFILE '/home/beltdrive/Download/tw-mysql/employee-data.csv'
+INTO TABLE Employee
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+
+
+practice1
+
+mysql> SELECT *
+    -> FROM Employee
+    -> WHERE name LIKE "%n%" AND salary > 6000;
++----+------------+-----+----------+-----------+--------+
+| id | name       | age | gender   | companyId | salary |
++----+------------+-----+----------+-----------+--------+
+|  1 | 'xiaohong' |  19 | 'female' |         1 |   7000 |
++----+------------+-----+----------+-----------+--------+
+1 row in set (0.00 sec)
+
+
+practice2
+
+mysql> SELECT t2.companyName, t1.name
+    -> FROM (Employee AS t1),
+    ->      (Company AS t2),
+    ->      (SELECT companyId, MAX(salary) AS salary
+    ->       FROM Employee
+    ->       GROUP BY companyId) AS t3
+    -> WHERE t1.companyId=t3.companyId AND t1.salary=t3.salary AND t1.companyId=t2.id;
++-------------+------------+
+| companyName | name       |
++-------------+------------+
+| 'baidu'     | 'xiaoming' |
+| 'alibaba'   | 'xiaohong' |
+| 'tengxun'   | 'xiaozhi'  |
++-------------+------------+
+3 rows in set (0.00 sec)
+
+
+practice3
+
+mysql> SELECT t1.companyName, t2.avgSalary
+    -> FROM (Company AS t1),
+    ->      (SELECT companyId, AVG(salary) AS avgSalary
+    ->       FROM Employee
+    ->       GROUP BY companyId) AS t2
+    -> WHERE t1.id=t2.companyId
+    -> ORDER BY t2.avgSalary DESC
+    -> LIMIT 1;
++-------------+-----------+
+| companyName | avgSalary |
++-------------+-----------+
+| 'tengxun'   | 8000.0000 |
++-------------+-----------+
+1 row in set (0.00 sec)
+
+
+practice4
+
+mysql> SELECT t1.id, t1.name, t1.age, t1.gender, t1.companyId, t1.salary, t2.companyName, t3.avgsal
+    -> FROM (Employee AS t1),
+    ->      (Company AS t2),
+    ->      (SELECT companyId, AVG(salary) AS avgsal
+    ->      FROM Employee
+    ->      GROUP BY companyId) AS t3
+    -> WHERE t1.companyId=t2.id AND t1.companyId=t3.companyId AND t1.salary>=t3.avgsal;
++----+------------+-----+----------+-----------+--------+-------------+-----------+
+| id | name       | age | gender   | companyId | salary | companyName | avgsal    |
++----+------------+-----+----------+-----------+--------+-------------+-----------+
+|  0 | 'xiaoming' |  20 | 'male'   |         0 |   6000 | 'baidu'     | 5000.0000 |
+|  1 | 'xiaohong' |  19 | 'female' |         1 |   7000 | 'alibaba'   | 6500.0000 |
+|  2 | 'xiaozhi'  |  15 | 'male'   |         2 |   8000 | 'tengxun'   | 8000.0000 |
++----+------------+-----+----------+-----------+--------+-------------+-----------+
+3 rows in set (0.00 sec)
