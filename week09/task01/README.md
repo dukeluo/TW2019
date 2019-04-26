@@ -1,5 +1,11 @@
 ### Spring Boot基础
 
+#### 运行结果
+
+![](https://s2.ax1x.com/2019/04/26/EnwmW9.png)
+
+
+
 #### 练习描述
 
 本题要求使用Spring boot来完成对Employee CURD(增删改查) API接口的实现。
