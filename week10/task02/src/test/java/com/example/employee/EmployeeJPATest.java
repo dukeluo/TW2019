@@ -24,6 +24,7 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
 public class EmployeeJPATest {
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -45,23 +46,28 @@ public class EmployeeJPATest {
         //1.查询名字是小红的employee
         Employee expectedEmployee = new Employee(1,"xiaohong",19,"female",1,7000);
 
-        String actualName = null;
+        String actualName = employeeRepository.findTopByName("xiaohong").getName();
+
         assertThat(actualName).isEqualTo(expectedEmployee.getName());
     }
 
     @Test
     public void should_return_employee_given_character_in_name_and_salary_large_than() throws Exception {
-        //2.找出Employee表中第一个姓名包含`n`字符的雇员所有个人信息
+        //2.找出Employee表中第一个姓名包含`n`字符并且薪资高于 6000 的雇员所有个人信息
         Employee expectedEmployee = new Employee(1,"xiaohong",19,"female",1,7000);
-        String actualName = null;
+
+        String actualName = employeeRepository.findFirstByNameLikeAndSalaryIsGreaterThan("%n%", 6000).getName();
+
         assertThat(actualName).isEqualTo(expectedEmployee.getName());
     }
 
     @Test
-    public void should_return_employee_name_when_employee_salary_is_max_and_given_company_id_() throws Exception {
-        //3.找出一个薪资最高且公司ID是1的雇员以及该雇员的name
+    public void should_return_employee_name_when_employee_salary_is_max_and_given_company_id() throws Exception {
+        //3.找出一个薪资最高且公司ID是*的雇员姓名
         Employee expectedEmployee = new Employee(1,"xiaohong",19,"female",1,7000);
-        String actualName = null;
+
+        String actualName = employeeRepository.findEmployeeNameByCompanyIdAndSalaryIsMax(1);
+
         assertThat(actualName).isEqualTo(expectedEmployee.getName());
     }
 
@@ -69,7 +75,8 @@ public class EmployeeJPATest {
     public void should_return_employee_list_when_input_page_request() throws Exception {
         //4.实现对Employee的分页查询，每页两条数据，一共三页数。
         //注意：PageRequest的构造方法已经弃用了代替的是PageRequest.of,并且最后一个参数代表按照table中的哪一个字段排序
-        Page<Employee> EmployeePage = null;
+        Page<Employee> EmployeePage = employeeRepository.findAll(PageRequest.of(0, 2));
+
         assertThat(EmployeePage.getTotalPages()).isEqualTo(3);
     }
 
@@ -77,15 +84,19 @@ public class EmployeeJPATest {
     public void should_return_company_name_when_input_employee_name() throws Exception {
         //5.查找xiaohong的所在的公司的公司名称
         String expectedCompanyName = "alibaba";
-        String actualCompanyName = null;
+
+        String actualCompanyName = employeeRepository.findCompanyNameByEmployeeName("xiaohong");
+
         assertThat(actualCompanyName).isEqualTo(expectedCompanyName);
     }
 
     @Test
     public void should_return_influence_lines_when_update_employee_name() throws Exception {
         //6.将xiaohong的名字改成xiaobai,输出这次修改影响的行数
-        Integer expectedLine = 1;
-        Integer actualLine = null;
+        int expectedLine = 1;
+
+        int actualLine = employeeRepository.updateName("xiaohong", "xiaobai");
+
         assertThat(actualLine).isEqualTo(expectedLine);
     }
 
@@ -93,7 +104,11 @@ public class EmployeeJPATest {
     public void should_deleted_employee_when_given_employee_name() throws Exception {
         //7.删除姓名是xiaohong的employee
         Employee expectedEmployee = new Employee(1,"xiaohong",19,"female",1,7000);
-        Employee actualEmployee = null;
+
+        employeeRepository.deleteByName("xiaohong");
+        Employee actualEmployee = employeeRepository.findTopByName("xiaohong");
+
         assertThat(actualEmployee).isNull();
     }
+
 }
