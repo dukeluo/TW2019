@@ -51,8 +51,10 @@ public class Practice09Test {
 
     @Test
     public void should_class_not_assign_a_student_as_leader_when_student_is_not_a_member() throws Exception {
+        Student tom = new Student(1, "Tom", 21, new Klass(2));
         Student jerry = new Student(1, "Jerry", 8, new Klass(5));
 
+        klass.appendMember(tom);
         klass.assignLeader(jerry);
 
         assertThat(systemOut()).isEqualTo("It is not one of us.\n");

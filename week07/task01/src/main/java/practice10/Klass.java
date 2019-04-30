@@ -27,7 +27,7 @@ public class Klass {
     }
 
     public void assignLeader(Student s) {
-        if (count == 0) {
+        if (count == 0 || !s.getKlass().equals(this)) {
             System.out.println("It is not one of us.");
             return ;
         }
