@@ -3,7 +3,7 @@ package practice11;
 import java.util.Collection;
 import java.util.LinkedList;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements Observer {
     private LinkedList<Klass> classes = new LinkedList<Klass>();
 
     public Teacher(int id, String name, int age) {
@@ -14,7 +14,7 @@ public class Teacher extends Person {
         super(id, name, age);
         this.classes = classes;
         for (Klass k : classes) {
-            k.addTeacher(this);
+            k.addObserver(this);
         }
     }
 
@@ -59,6 +59,7 @@ public class Teacher extends Person {
                 + str;
     }
 
+    @Override
     public void update(Student s, int messageType) {
         String message = "";
 

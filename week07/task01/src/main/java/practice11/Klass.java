@@ -7,7 +7,7 @@ public class Klass {
     private int klass;
     private Student leader;
     private int count = 0;
-    private Collection<Teacher> teachers = new LinkedList<Teacher>();
+    private Collection<Observer> observers = new LinkedList<Observer>();
 
     public Klass(int klass) {
         this.klass = klass;
@@ -44,12 +44,12 @@ public class Klass {
         notifyAll(s, 1);    // 0 means someone joins; 1 means someone be the leader
     }
 
-    public void addTeacher(Teacher t) {
-        teachers.add(t);
+    public void addObserver(Observer t) {
+        observers.add(t);
     }
 
     private void notifyAll(Student s, int messageType) {
-        for (Teacher t : teachers) {
+        for (Observer t : observers) {
             t.update(s, messageType);
         }
     }
