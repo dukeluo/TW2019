@@ -34,7 +34,7 @@ public class Klass {
         leader = s;
     }
 
-    public boolean isIn(Student s) {
+    public boolean contains(Student s) {
         return s.getKlass().equals(this);
     }
 

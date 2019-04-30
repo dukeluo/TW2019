@@ -24,7 +24,7 @@ public class Teacher extends Person {
 
     public boolean isTeaching(Student s) {
         for (Klass k : classes) {
-            if (k.isIn(s)) {
+            if (k.contains(s)) {
                 return true;
             }
         }

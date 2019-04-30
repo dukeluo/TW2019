@@ -25,7 +25,7 @@ public class Klass {
         return leader;
     }
 
-    public boolean isIn(Student s) {
+    public boolean contains(Student s) {
         return s.getKlass().equals(this);
     }
 
