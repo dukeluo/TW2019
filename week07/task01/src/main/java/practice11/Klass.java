@@ -48,7 +48,7 @@ public class Klass {
         teachers.add(t);
     }
 
-    public void notifyAll(Student s, int messageType) {
+    private void notifyAll(Student s, int messageType) {
         for (Teacher t : teachers) {
             t.update(s, messageType);
         }

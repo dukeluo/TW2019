@@ -18,8 +18,8 @@ public class Teacher extends Person {
 
     public String introduce() {
         String str = (klass == 0)
-               ? "I am a Teacher. I teach No Class."
-               : String.format("I am a Teacher. I teach Class %d.", klass);
+                ? "I am a Teacher. I teach No Class."
+                : String.format("I am a Teacher. I teach Class %d.", klass);
 
         return super.introduce()
                 + " "

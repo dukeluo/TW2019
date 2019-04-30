@@ -1,8 +1,8 @@
 package practice03;
 
 public class Person {
-    int age;
-    String name;
+    private int age;
+    private String name;
 
     public Person(String name, int age) {
         this.name = name;
