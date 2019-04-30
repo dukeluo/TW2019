@@ -31,6 +31,7 @@ public class Teacher extends Person {
         return false;
     }
 
+    @Override
     public String introduce() {
         int size = classes.size();
         String str = "";

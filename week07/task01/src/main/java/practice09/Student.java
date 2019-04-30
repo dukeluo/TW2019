@@ -20,6 +20,7 @@ public class Student extends Person {
         return klass;
     }
 
+    @Override
     public String introduce() {
         String str = (this.equals(klass.getLeader()))
                 ? String.format("I am a Student. I am Leader of %s.", klass.getDisplayName())

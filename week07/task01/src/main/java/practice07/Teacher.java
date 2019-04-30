@@ -16,6 +16,7 @@ public class Teacher extends Person {
         return klass;
     }
 
+    @Override
     public String introduce() {
         String str = (klass == null)
                 ? "I am a Teacher. I teach No Class."

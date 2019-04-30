@@ -38,6 +38,7 @@ public class Klass {
         return s.getKlass().equals(this);
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

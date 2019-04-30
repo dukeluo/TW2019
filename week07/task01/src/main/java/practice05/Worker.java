@@ -5,6 +5,7 @@ public class Worker extends Person {
         super(name, age);
     }
 
+    @Override
     public String introduce() {
         return super.introduce()
                 + " "
