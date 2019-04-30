@@ -33,4 +33,18 @@ public class Klass {
         }
         leader = s;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Klass k = (Klass) o;
+
+        return k.getNumber() == this.getNumber();
+    }
 }

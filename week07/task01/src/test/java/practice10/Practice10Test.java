@@ -77,7 +77,7 @@ public class Practice10Test {
         Student tom = new Student(1, "Tom", 21, klass2);
         assertThat(tom.getName()).isEqualTo("Tom");
         assertThat(tom.getAge()).isEqualTo(21);
-        assertThat(tom.getKlass()).isEqualTo(klass2);
+        assertThat(tom.getKlass()).isEqualTo(new Klass(2));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class Practice10Test {
         assertThat(tom.getName()).isEqualTo("Tom");
         assertThat(tom.getAge()).isEqualTo(21);
         assertThat(tom.getClasses().size()).isEqualTo(1);
-        assertThat(tom.getClasses().toArray()[0]).isEqualTo(klass2);
+        assertThat(tom.getClasses().toArray()[0]).isEqualTo(new Klass(2));
     }
 
     @Test
