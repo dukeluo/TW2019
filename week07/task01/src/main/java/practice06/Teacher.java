@@ -1,6 +1,6 @@
 package practice06;
 
-public class Teacher extends practice05.Person {
+public class Teacher extends Person {
     private int klass;
 
     public Teacher(String name, int age) {
@@ -8,7 +8,7 @@ public class Teacher extends practice05.Person {
     }
 
     public Teacher(String name, int age, int klass) {
-        this(name, age);
+        super(name, age);
         this.klass = klass;
     }
 
@@ -22,7 +22,7 @@ public class Teacher extends practice05.Person {
                : String.format("I am a Teacher. I teach Class %d.", klass);
 
         return super.introduce()
-               + " "
-               + str;
+                + " "
+                + str;
     }
 }

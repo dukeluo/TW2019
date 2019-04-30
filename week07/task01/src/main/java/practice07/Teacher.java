@@ -8,7 +8,7 @@ public class Teacher extends Person {
     }
 
     public Teacher(String name, int age, Klass klass) {
-        this(name, age);
+        super(name, age);
         this.klass = klass;
     }
 
@@ -18,21 +18,23 @@ public class Teacher extends Person {
 
     public String introduce() {
         String str = (klass == null)
-               ? "I am a Teacher. I teach No Class."
-               : String.format("I am a Teacher. I teach %s.", klass.getDisplayName());
+                ? "I am a Teacher. I teach No Class."
+                : String.format("I am a Teacher. I teach %s.", klass.getDisplayName());
 
         return super.introduce()
-               + " "
-               + str;
+                + " "
+                + str;
     }
 
     public String introduceWith(Student s) {
         String str = (klass == s.getKlass())
-               ? String.format("I teach %s.", s.getName())
-               : String.format("I don't teach %s.", s.getName());
+                ? String.format("I teach %s.", s.getName())
+                : String.format("I don't teach %s.", s.getName());
 
         return super.introduce()
-               + " I am a Teacher. "
-               + str;
+                + " "
+                + "I am a Teacher."
+                + " "
+                + str;
     }
 }

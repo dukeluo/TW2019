@@ -8,7 +8,7 @@ public class Student extends Person {
     }
 
     public Student(int id, String name, int age, Klass klass) {
-        this(id, name, age);
+        super(id, name, age);
         this.klass = klass;
     }
 
@@ -22,8 +22,8 @@ public class Student extends Person {
 
     public String introduce() {
         String str = (this.equals(klass.getLeader()))
-               ? String.format("I am a Student. I am Leader of %s.", klass.getDisplayName())
-               : String.format("I am a Student. I am at %s.",klass.getDisplayName());
+                ? String.format("I am a Student. I am Leader of %s.", klass.getDisplayName())
+                : String.format("I am a Student. I am at %s.",klass.getDisplayName());
 
         return super.introduce()
                 + " "

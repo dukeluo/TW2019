@@ -1,10 +1,24 @@
 package practice09;
 
-public class Klass extends practice08.Klass {
+public class Klass {
+    private int klass;
+    private Student leader;
     private int count = 0;
 
     public Klass(int klass) {
-        super(klass);
+        this.klass = klass;
+    }
+
+    public int getNumber() {
+        return klass;
+    }
+
+    public String getDisplayName() {
+        return String.format("Class %d", klass);
+    }
+
+    public Student getLeader() {
+        return leader;
     }
 
     public void appendMember(Student s) {
@@ -17,6 +31,6 @@ public class Klass extends practice08.Klass {
             System.out.println("It is not one of us.");
             return ;
         }
-        super.assignLeader(s);
+        leader = s;
     }
 }

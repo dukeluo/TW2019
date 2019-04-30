@@ -1,8 +1,37 @@
 package practice10;
 
-public class Klass extends practice09.Klass {
+public class Klass {
+    private int klass;
+    private Student leader;
+    private int count = 0;
+
     public Klass(int klass) {
-        super(klass);
+        this.klass = klass;
+    }
+
+    public int getNumber() {
+        return klass;
+    }
+
+    public String getDisplayName() {
+        return String.format("Class %d", klass);
+    }
+
+    public Student getLeader() {
+        return leader;
+    }
+
+    public void appendMember(Student s) {
+        s.setKlass(this);
+        count++;
+    }
+
+    public void assignLeader(Student s) {
+        if (count == 0) {
+            System.out.println("It is not one of us.");
+            return ;
+        }
+        leader = s;
     }
 
     public boolean isIn(Student s) {

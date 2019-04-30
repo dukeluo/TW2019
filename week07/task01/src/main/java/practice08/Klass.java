@@ -1,10 +1,19 @@
 package practice08;
 
-public class Klass extends practice07.Klass {
+public class Klass {
+    private int klass;
     private Student leader;
 
     public Klass(int klass) {
-        super(klass);
+        this.klass = klass;
+    }
+
+    public int getNumber() {
+        return klass;
+    }
+
+    public String getDisplayName() {
+        return String.format("Class %d", klass);
     }
 
     public void assignLeader(Student s) {

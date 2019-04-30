@@ -11,7 +11,7 @@ public class Teacher extends Person {
     }
 
     public Teacher(int id, String name, int age, LinkedList<Klass> classes) {
-        this(id, name, age);
+        super(id, name, age);
         this.classes = classes;
     }
 
@@ -34,24 +34,28 @@ public class Teacher extends Person {
 
         for (int i = 0; i < size; i++) {
             str += (i < size - 1)
-                   ? classes.get(i).getNumber() + ", "
-                   : classes.get(i).getNumber();
+                    ? classes.get(i).getNumber() + ", "
+                    : classes.get(i).getNumber();
         }
         str = (size == 0)
-              ? "No Class"
-              : "Class " + str;
+                ? "No Class"
+                : "Class " + str;
         return super.introduce()
-               + " I am a Teacher. "
-               + String.format("I teach %s.", str);
+                + " "
+                + "I am a Teacher."
+                + " "
+                + String.format("I teach %s.", str);
     }
 
     public String introduceWith(Student s) {
         String str = isTeaching(s)
-                     ? String.format("I teach %s.", s.getName())
-                     : String.format("I don't teach %s.", s.getName());
+                ? String.format("I teach %s.", s.getName())
+                : String.format("I don't teach %s.", s.getName());
 
         return super.introduce()
-               + " I am a Teacher. "
-               + str;
+                + " "
+                + "I am a Teacher."
+                + " "
+                + str;
     }
 }

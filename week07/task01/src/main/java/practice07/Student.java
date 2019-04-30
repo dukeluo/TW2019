@@ -8,7 +8,7 @@ public class Student extends Person {
     }
 
     public Student(String name, int age, Klass klass) {
-        this(name, age);
+        super(name, age);
         this.klass = klass;
     }
 
@@ -19,6 +19,6 @@ public class Student extends Person {
     public String introduce() {
         return super.introduce()
                 + " "
-                + String.format("I am a Student. I am at %s.",klass.getDisplayName());
+                + String.format("I am a Student. I am at %s.", klass.getDisplayName());
     }
 }
