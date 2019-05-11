@@ -1,10 +1,10 @@
 package com.tw.task01;
 
 public class Employee {
-    private int id;
-    private String name;
-    private int age;
-    private String gender;
+    public int id;
+    public String name;
+    public int age;
+    public String gender;
 
     public Employee() {
     }
