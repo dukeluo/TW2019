@@ -23,12 +23,17 @@ public class EmployeeController {
     }
 
     private Employee findById(int id) {
-        for (Employee e : employeeList) {
-            if (e.getId() == id) {
-                return e;
-            }
-        }
-        return null;
+        return employeeList.stream()
+                .filter(e -> e.getId() == id)
+                .findFirst()
+                .orElse(null);
+//
+//        for (Employee e : employeeList) {
+//            if (e.getId() == id) {
+//                return e;
+//            }
+//        }
+//        return null;
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
@@ -73,7 +78,6 @@ public class EmployeeController {
                 Field field = ReflectionUtils.findField(Employee.class, k);
                 assert field != null;
                 ReflectionUtils.setField(field, exitedEmployee, v);
-
             });
             return new ResponseEntity<Employee>(exitedEmployee, HttpStatus.OK);
         }
